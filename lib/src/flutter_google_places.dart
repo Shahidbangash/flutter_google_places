@@ -3,8 +3,9 @@ library flutter_google_places.src;
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_google_maps_webservices/places.dart';
+import 'package:flutter_google_maps_webservices/places.dart';
 import 'package:google_api_headers/google_api_headers.dart';
-import 'package:google_maps_webservice/places.dart';
 import 'package:http/http.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -259,11 +260,11 @@ class PlacesAutocompleteResult extends StatefulWidget {
   final TextStyle? resultTextStyle;
 
   const PlacesAutocompleteResult({
-    Key? key,
+    super.key,
     this.onTap,
     this.logo,
     this.resultTextStyle,
-  }) : super(key: key);
+  });
 
   @override
   PlacesAutocompleteResultState createState() =>

@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:google_api_headers/google_api_headers.dart';
 import 'package:flutter/material.dart';
+import 'package:google_api_headers/google_api_headers.dart';
+import 'package:flutter_google_maps_webservices/places.dart';
+
 import 'package:flutter_google_places/flutter_google_places.dart';
-import 'package:google_maps_webservice/places.dart';
 
 const kGoogleApiKey = "API_KEY";
 
@@ -26,7 +27,7 @@ final customTheme = ThemeData(
 );
 
 class RoutesWidget extends StatelessWidget {
-  const RoutesWidget({Key? key}) : super(key: key);
+  const RoutesWidget({super.key});
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -84,12 +85,12 @@ class _MyAppState extends State<MyApp> {
         value: _mode,
         items: const <DropdownMenuItem<Mode>>[
           DropdownMenuItem<Mode>(
-            child: Text("Overlay"),
             value: Mode.overlay,
+            child: Text("Overlay"),
           ),
           DropdownMenuItem<Mode>(
-            child: Text("Fullscreen"),
             value: Mode.fullscreen,
+            child: Text("Fullscreen"),
           ),
         ],
         onChanged: (dynamic m) {
@@ -152,9 +153,8 @@ Future<void> displayPrediction(Prediction? p, BuildContext context) async {
 // basically your widget need to extends [GooglePlacesAutocompleteWidget]
 // and your state [GooglePlacesAutocompleteState]
 class CustomSearchScaffold extends PlacesAutocompleteWidget {
-  CustomSearchScaffold({Key? key})
+  CustomSearchScaffold({super.key})
       : super(
-          key: key,
           apiKey: kGoogleApiKey,
           sessionToken: Uuid().generateV4(),
           language: "en",
@@ -170,12 +170,12 @@ class _CustomSearchScaffoldState extends PlacesAutocompleteState {
   Widget build(BuildContext context) {
     final appBar = AppBar(title: const AppBarPlacesAutoCompleteTextField());
     final body = PlacesAutocompleteResult(
-      onTap: (p) {
+      onTap: (Prediction p) {
         displayPrediction(p, context);
       },
-      logo: Row(
-        children: const [FlutterLogo()],
+      logo: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        children: [FlutterLogo()],
       ),
     );
     return Scaffold(key: searchScaffoldKey, appBar: appBar, body: body);

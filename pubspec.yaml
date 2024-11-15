@@ -10,10 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_api_headers: any
-  google_maps_webservice: any
-  http: any
-  rxdart: any
+  flutter_google_maps_webservices: ^1.1.1
+  google_api_headers: ^4.1.2
+  rxdart: ^0.28.0
+  # google_api_headers: any
+  # google_maps_webservice: any
+  # http: ^0.13.6
+  # http: any
+  # rxdart: any
 
 dev_dependencies:
   flutter_test:
